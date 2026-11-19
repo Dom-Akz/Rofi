@@ -11,9 +11,9 @@ else
 	curr=$(df -B M /dev/nvme0n1p2 | awk '{printf $3}' | tr -d -c '0-9')
 	prev=$(cat $file)
 	res=$((curr - prev))
-	if [ $res -gt 1000 ]; then
+	if [[ ${res#-} -ge 1000 ]]; then
 		res=$((res / 1000))
-		printf "change in disk is: %'dG" $res
+		printf "change in disk space is: %'dG" $res
 	else
 		printf "change in disk space is: %'dM" "$res"
 	fi

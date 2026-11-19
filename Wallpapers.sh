@@ -9,7 +9,7 @@ NG_WALL="$HOME/Pictures/Wallpapers/NG_WALL"
 SM_WALL="$HOME/Pictures/Wallpapers/SM"
 RAIN_WALL="$HOME/Pictures/Wallpapers/RAIN"
 VID_WALL="$HOME/Pictures/Wallpapers/VID_WALL/"
-FEM_WALL="$HOME/Pictures/Wallpapers/FEM-WALL/"
+FEM_WALL="$HOME/Pictures/Wallpapers/FEM_WALL/"
 AVG_WALL="$HOME/Pictures/WALL/walls/"
 
 LIST_FILE="/tmp/wallpaper_list.txt"
@@ -23,7 +23,7 @@ declare -r LONG=$(curl -s https://ipinfo.io/loc | cut -d, -f2)
 
 timeofday() {
 	local h=$(date +%H)
-	if [ "$h" -gt 6 ] && [ "$h" -lt 19 ]; then
+	if [ "$h" -gt 6 ] && [ "$h" -lt 18 ]; then
 		echo "morning"
 	else
 		echo "night"

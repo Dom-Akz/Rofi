@@ -58,3 +58,8 @@ end
 function add
     echo $argv[1] >> $argv[2]
 end 
+
+# copy the last command run 
+function cpm
+    history --max=1 | string trim | wl-copy
+end 
