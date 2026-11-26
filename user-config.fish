@@ -6,6 +6,29 @@ function clg
 end
 
 
+function ldu
+    du -cha $argv | sort -h
+end
+
+
+function bdu 
+    du -ah $argv | sort -h | tail -n 2 | head -n 1
+end
+
+function own
+    ls -ld $argv[1] | awk '{print $3}'
+end
+
+
+function psk 
+    nmcli conn show $argv[1] -s | grep -m 1 "802-11-wireless-security.psk" | awk '{print $NF}'
+end
+
+function pkill 
+    pgrep -f $argv && pkill -USR2 -f $argv
+end
+
+
 function dfh
     set -gx fish_history ''
 
@@ -31,11 +54,6 @@ end
     alias adp 'set -U fish_user_paths'
     alias chp 'cp (shuf -n 1 -e ~/Pictures/Wallpapers/PROFILE/*) ~/.face' # pick a random image and set it as profile pic
     alias cpm 'history --max=1 | string trim | wl-copy'
-    alias bdu 'du -ah $argv | sort -h | tail -n 2 | head -n 1'
-    alias ldu 'du -cha $argv | sort -h' # print disque usage of all files and sub-dirctorys
-    alias pkill 'pgrep -f $argv && pkill -USR2 -f $argv' 
-    alias own 'ls -ld $argv | awk "{print $3}"'
-    alias psk 'nmcli conn show $argv -s | grep -m 1 "802-11-wireless-security.psk" | awk "{print $NF}"' # show the password of the given network connection
 
 
     # utility
@@ -46,7 +64,6 @@ end
     alias meta 'curl wttr.in'
     alias scan-dir 'clamscan -ri --no-summary'
     
-
     
     # security
     alias enc 'openssl enc -aes-256-cbc -pbkdf2 -in $argv[1] -out $argv[2]'
